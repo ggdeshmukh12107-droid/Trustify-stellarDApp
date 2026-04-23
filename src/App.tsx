@@ -8,6 +8,7 @@ import { UserProfile } from './components/UserProfile';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { useWallet } from './hooks/useWallet';
 import { useTrustSystem } from './hooks/useTrustSystem';
+import { MetricsDashboard } from './components/MetricsDashboard';
 import type { TrustTask, CreateTaskInput, Toast } from './types';
 import { generateId } from './utils/stellar';
 import './App.css';
@@ -112,6 +113,9 @@ function App() {
         {wallet.isConnected && wallet.publicKey && (
           <UserProfile publicKey={wallet.publicKey} tasks={tasks} />
         )}
+
+        {/* Global Metrics Dashboard */}
+        <MetricsDashboard />
 
         {/* Tasks Grid */}
         <section className="campaigns-section" id="tasks">
