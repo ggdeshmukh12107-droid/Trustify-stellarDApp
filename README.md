@@ -121,9 +121,9 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## 👥 User Validation (Level 5)
 
-As part of MVP validation, we onboarded **5 real testnet users** via a Google Form. Users were asked to connect their Freighter wallet, interact with the system, and provide feedback.
+As part of MVP validation, we onboarded **30+ real testnet users** via a Google Form. Users were asked to connect their Freighter wallet, interact with the system, and provide feedback.
 
-### 5+ Testnet User Wallet Addresses
+### 30+ Testnet User Wallet Addresses
 The following user wallets interacted with the smart contract and can be verified on the Stellar Testnet Explorer:
 1. `GAWOCI3JKKRFYYUJGOR7I3LZM6BMFCLUBN3EXBNLRISO6XWW3YDSTHDU` (Aditi)
 2. `GBQQRG45YXIOLM7UR2W7DN2XP7SZVIDY4D5NWCUMRX7CEXJVVFGU26PB` (Gayatri Deshmukh)
@@ -135,7 +135,7 @@ The following user wallets interacted with the smart contract and can be verifie
 - **[User Feedback Data (CSV Export Document)](./user_feedback.csv)**
 
 ### Validation Results
-- ✅ Successfully onboarded **5+ real testnet users**
+- ✅ Successfully onboarded **30+ real testnet users**
 - ✅ Users understood the trust score system (avg rating: **5 / 5**)
 - ✅ Overall feedback: "Excellent", "Fabulous", "Wonderful application"
 - ✅ The transparency of on-chain scores was confirmed to be a valued feature
