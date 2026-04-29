@@ -20,7 +20,7 @@ export const CreateTaskModal: React.FC<{
           value={title} 
           onChange={e => setTitle(e.target.value)} 
         />
-        <button disabled={isLoading} onClick={() => onSubmit({ title, description: 'mock' })}>
+        <button disabled={isLoading} onClick={() => onSubmit({ title, description: 'mock', targetScore: 10, deadline: new Date() })}>
           Submit
         </button>
         <button onClick={onClose}>Cancel</button>

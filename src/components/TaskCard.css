@@ -1,0 +1,24 @@
+.task-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.trust-score-badge {
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: #000;
+  font-weight: bold;
+  display: inline-block;
+  width: fit-content;
+}

@@ -13,7 +13,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, isConnected, isLoading
   return (
     <div className="task-card">
       <h3>{task.title}</h3>
-      <p>By {task.creator}</p>
+      <p>By {task.freelancer}</p>
       <div className="trust-score-badge">Score: {task.trustScore}</div>
       <button 
         disabled={!isConnected || isLoading} 

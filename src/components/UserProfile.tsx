@@ -5,7 +5,7 @@ export const UserProfile: React.FC<{
   publicKey: string;
   tasks: TrustTask[];
 }> = ({ publicKey, tasks }) => {
-  const userTasks = tasks.filter(t => t.creator === publicKey);
+  const userTasks = tasks.filter(t => t.freelancer === publicKey);
   const totalScore = userTasks.reduce((s, t) => s + t.trustScore, 0);
 
   return (
