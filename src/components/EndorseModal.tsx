@@ -15,18 +15,39 @@ export const EndorseModal: React.FC<{
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Endorse {task.title}</h2>
-        <input 
-          type="number"
-          placeholder="Trust Points to Endorse" 
-          value={amount} 
-          onChange={e => setAmount(Number(e.target.value))} 
-        />
-        <button disabled={isLoading} onClick={() => onEndorse(amount)}>
-          Submit Endorsement
-        </button>
-        <button onClick={onClose}>Cancel</button>
+        <h2>Endorse Trust</h2>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+          Assign verifiable trust points to <strong>{task.title}</strong> (by {task.freelancer}).
+        </p>
+        
+        <div className="modal-input-group">
+          <label htmlFor="endorse-amount">Trust Points to Endorse (XLM)</label>
+          <input 
+            id="endorse-amount"
+            className="modal-input"
+            type="number"
+            min="1"
+            max="100"
+            placeholder="e.g. 5" 
+            value={amount} 
+            onChange={e => setAmount(Number(e.target.value))} 
+          />
+        </div>
+
+        <div className="modal-actions">
+          <button className="btn btn-outline" onClick={onClose} disabled={isLoading}>
+            Cancel
+          </button>
+          <button 
+            className="btn btn-primary btn-glow" 
+            disabled={isLoading || amount <= 0} 
+            onClick={() => onEndorse(amount)}
+          >
+            {isLoading ? 'Processing...' : 'Submit Endorsement'}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
+
