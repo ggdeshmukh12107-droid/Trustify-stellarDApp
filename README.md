@@ -116,9 +116,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ## 🎥 Demos & Links
 
 - **Live Demo:** [https://stellarfund-level4-dapp.netlify.app](https://stellarfund-level4-dapp.netlify.app) *(or replace with actual Trustify link)*
-- **Demo Video:** [Insert YouTube/Loom Video Link Here]
-
----
+- **Demo Video:** https://github.com/user-attachments/assets/ebd8a8b0-3f89-4d5d-afe1-0c11f9c56c9f
 
 ## 👥 User Validation (Level 5)
 
