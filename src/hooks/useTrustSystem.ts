@@ -28,9 +28,24 @@ export function useTrustSystem() {
     setTasks(prev => [...prev, { id: Date.now().toString(), title: input.title, description: input.description, trustScore: 0, freelancer: user, completed: false } as any]);
   };
 
-  const endorseTask = async (input: { taskId: string; amount: number }, user: string, _signer?: any) => {
+  const endorseTask = async (input: { taskId: string; amount: number }, user: string, signer?: (xdr: string) => Promise<string>) => {
     Monitoring.trackEvent('task_endorsed', { taskId: input.taskId, amount: input.amount });
+
+    if (signer && user !== 'Anonymous') {
+      try {
+        const { buildAndSubmitDonationTx } = await import('../utils/stellarTx');
+        const targetTask = tasks.find(t => t.id === input.taskId);
+        const title = targetTask ? targetTask.title : 'Marketplace Endorsement';
+        
+        await buildAndSubmitDonationTx(user, input.amount, title, signer);
+      } catch (err) {
+        console.error('Blockchain endorsement failed, proceeding with offline state update.', err);
+        throw err;
+      }
+    }
+
     setAllEndorsements(prev => [...prev, { taskId: input.taskId, amount: input.amount, from: user }]);
+    setTasks(prev => prev.map(t => t.id === input.taskId ? { ...t, trustScore: t.trustScore + input.amount } : t));
   };
 
   return { tasks, isLoading, createTask, endorseTask, allEndorsements };
