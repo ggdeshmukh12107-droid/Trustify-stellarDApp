@@ -199,7 +199,7 @@ Based on collected user feedback, the following improvements are planned for the
 
 - ✅ **Live Demo Link:** [Trustify Live on Netlify](https://inspiring-swan-f1692a.netlify.app)
 - ✅ **30+ Verified Active Users:** Generated a testnet dataset of 30 active user feedback rows with addresses.
-- ✅ **Metrics Dashboard:** Implemented the `MetricsDashboard` summarizing trust scores and network statistics.
+- ✅ **Metrics Dashboard:** Implemented the `MetricsDashboard` summarizing trust scores and network statistics on the [Live Netlify Client](https://inspiring-swan-f1692a.netlify.app).
 - ✅ **Data Indexing:** Added an in-memory testnet indexer to support scalable score aggregations (`src/utils/dataIndexer.ts`).
 - ✅ **Monitoring Active:** Established telemetry tracking with the `Monitoring` module stub.
 - ✅ **Security Checklist Completed:** Formatted and tracked in `SECURITY.md`.
