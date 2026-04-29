@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Trustify — Decentralized Reputation System on Stellar
 
 > 🔥 **"A decentralized reputation system where users earn a trust score based on their actions, ensuring transparency and reliability using blockchain."**
