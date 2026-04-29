@@ -141,6 +141,7 @@ function App() {
                   onEndorse={setEndorsingTask}
                   isConnected={wallet.isConnected}
                   isLoading={loadingTaskId === t.id}
+                  onConnect={wallet.connect}
                 />
               ))}
             </div>

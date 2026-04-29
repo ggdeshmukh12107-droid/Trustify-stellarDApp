@@ -7,20 +7,24 @@ export interface TaskCardProps {
   isConnected: boolean;
   isLoading: boolean;
   onEndorse: (task: TrustTask) => void;
+  onConnect: () => void;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ task, isConnected, isLoading, onEndorse }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ task, isConnected, isLoading, onEndorse, onConnect }) => {
   return (
     <div className="task-card">
       <h3>{task.title}</h3>
-      <p>By {task.freelancer}</p>
-      <div className="trust-score-badge">Score: {task.trustScore}</div>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>By {task.freelancer}</p>
+      <div className="trust-score-badge">Trust Score: {task.trustScore}</div>
       <button 
-        disabled={!isConnected || isLoading} 
-        onClick={() => onEndorse(task)}
+        className="btn btn-primary btn-glow"
+        style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}
+        disabled={isLoading} 
+        onClick={() => isConnected ? onEndorse(task) : onConnect()}
       >
-        {isLoading ? 'Processing...' : 'Endorse Trust'}
+        {isLoading ? 'Processing...' : isConnected ? 'Endorse Trust' : 'Connect to Endorse'}
       </button>
     </div>
   );
 };
+
