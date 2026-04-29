@@ -11,6 +11,8 @@ import {
     Operation,
     Asset,
     Memo,
+    Keypair,
+    Transaction,
 } from '@stellar/stellar-sdk';
 
 const TESTNET_URL = 'https://horizon-testnet.stellar.org';
@@ -71,9 +73,30 @@ export async function buildAndSubmitDonationTx(
         throw new Error('Freighter did not return a signed transaction. Did you approve it?');
     }
 
-    // Parse the signed XDR and submit to Stellar testnet
-    const signedTx = TransactionBuilder.fromXDR(signedXdr, Networks.TESTNET);
-    const result = await server.submitTransaction(signedTx);
+    // Parse the signed XDR
+    const signedTx = TransactionBuilder.fromXDR(signedXdr, Networks.TESTNET) as Transaction;
+
+    // --- FEE SPONSORSHIP (GASLESS FEE BUMP) ---
+    // Sponsor details (Pre-funded testnet keypair)
+    const sponsorSecret = 'SBRW3BNOKYRCEC4TRFMR2RL3VB425KU52F5T37OMEOXG3ZIXJUMNCGQH';
+    const sponsorKeypair = Keypair.fromSecret(sponsorSecret);
+
+    // Call friendbot in case the sponsor account runs dry or is completely uninitialized
+    await ensureFunded(sponsorKeypair.publicKey());
+
+    // Wrap the inner transaction into a FeeBumpTransaction
+    const feeBumpTx = TransactionBuilder.buildFeeBumpTransaction(
+        sponsorKeypair.publicKey(),
+        BASE_FEE, // Sponsor covers the transaction fees
+        signedTx,
+        Networks.TESTNET
+    );
+
+    // Sponsor signs the outer envelope
+    feeBumpTx.sign(sponsorKeypair);
+
+    // Submit the sponsored transaction to Stellar testnet
+    const result = await server.submitTransaction(feeBumpTx);
 
     return {
         hash: result.hash,
